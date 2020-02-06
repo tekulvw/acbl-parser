@@ -76,7 +76,6 @@ def update_db(db_path, game_files, filter):
     c = conn.cursor()
 
     for (i, row) in enumerate(get_player_db_rows(events)):
-        print(i)
         id_res = c.execute("SELECT id FROM Player WHERE name=?", [row[1]]).fetchone()
         if id_res is None or len(id_res) == 0:
             c.execute("INSERT INTO Player VALUES(NULL, ?)", [row[1]])
